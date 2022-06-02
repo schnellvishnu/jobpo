@@ -1,0 +1,12 @@
+class jobs(models.Model):
+    job_title=models.CharField(max_length=150)
+    company_name=models.CharField(max_length=150)
+    location=models.CharField(max_length=120)
+    salary=models.PositiveIntegerField(null=True)
+    experience=models.PositiveIntegerField(default=0)
+for creating a new job object:-
+jobs.objects.create(job_title="angular developer",company_name="tcs",location="kakkanadu",salary=40000,experience=0)
+jobs.objects.create(job_title="python developer",company_name="wipro",location="trivandrom",salary=50000,experience=0)
+jobs.objects.create(job_title="data science",company_name="hcl",location="calicut",salary=30000,experience=1)
+factching all records from database:-
+qs=jobs.objects.all()
