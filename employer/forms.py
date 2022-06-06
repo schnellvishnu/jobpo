@@ -1,11 +1,12 @@
 from django import forms
-from employer.models import Jobs
+from employer.models import Jobs,Companyprofile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import  UserCreationForm
 
 class JobForm(forms.ModelForm):
     class Meta:
         model=Jobs
+
         fields="__all__"
 
 
@@ -31,3 +32,11 @@ class Passwordresetform(forms.Form):
         if pwd1!=pwd2:
             msg="password miss match"
             self.add_error("password1",msg)
+
+
+
+
+class Companyprofileform(forms.ModelForm):
+    class Meta:
+        model=Companyprofile
+        exclude=("user",)

@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from django.views.generic import TemplateView,View,ListView,CreateView,DetailView,FormView
+from django.views.generic import TemplateView,View,ListView,CreateView,DetailView,FormView,UpdateView
 # Create your views here.
-from employer.models import Jobs
+from employer.models import Jobs,Companyprofile
 from django.contrib.auth.models import User
-from employer.forms import Signupform,Loginform,Passwordresetform
+from employer.forms import Signupform,Loginform,Passwordresetform,Companyprofileform
 from django.contrib.auth import authenticate,login,logout
 #List,Detail,Update,Delete,
 from employer.forms import JobForm
@@ -131,3 +131,30 @@ class Passwordresetview(TemplateView):
             u.set_password(pwd1)
             u.save()
             return redirect("signin")
+
+
+
+
+
+class Companyprofileview(CreateView) :
+    model=Companyprofile
+    form_class = Companyprofileform
+    template_name = "emp-addprofile.html"
+    success_url = reverse_lazy("emp-home")
+
+    def form_valid(self, form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+
+class Empviewprofileview(TemplateView):
+    template_name = "emp-profile.html"
+
+
+
+
+class Empprofileeditview(UpdateView):
+    model = Companyprofile
+    form_class = Companyprofileform
+    template_name = "emp-editprofile.html"
+    success_url = reverse_lazy("emp-profile")
+    pk_url_kwarg = "id"
