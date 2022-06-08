@@ -7,7 +7,10 @@ class JobForm(forms.ModelForm):
     class Meta:
         model=Jobs
 
-        fields="__all__"
+        exclude=("company","created_date","active_status")
+        widgets={
+            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"})
+        }
 
 
 

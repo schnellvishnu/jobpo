@@ -13,7 +13,7 @@ path("home",views.EmployerHomeView.as_view(),name="emp-home"),
     path("users/accounts/signout",views.signout_view,name="signout"),
     path("users/password/change",views.Changepasswordview.as_view(),name="password-change"),
     path("users/password/reset",views.Passwordresetview.as_view(),name="password-reset"),
-    path("profile/add",views.Companyprofileview.as_view(),name="emp-addprofile"),
+    path("profile/add/",views.Companyprofileview.as_view(),name="emp-addprofile"),
     path("profile/detail",views.Empviewprofileview.as_view(),name="emp-profile"),
     path("profile/edit/<int:id>",views.Empprofileeditview.as_view(),name="emp-editprofile")
 

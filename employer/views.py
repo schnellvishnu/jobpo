@@ -27,6 +27,9 @@ class AddJobView(CreateView):
     #         return render(request,"emp-home.html")
     #     else:
     #         return render(request,"emp-addjob.html",{"form":form})
+    def form_valid(self, form):
+        form.instance.company=self.request.user
+        return super().form_valid(form)
 class Listjobview(ListView):
     model = Jobs
     context_object_name = "jobs"
@@ -34,6 +37,8 @@ class Listjobview(ListView):
     # def get(self,request):
     #     qs=Jobs.objects.all()
     #     return render(request,"emp-listjob.html",{"jobs":qs})
+    def get_queryset(self):
+        return Jobs.objects.filter(company=self.request.user)
 
 
 class Jobdetailview(DetailView):
