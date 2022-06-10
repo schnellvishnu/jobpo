@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.views.generic import TemplateView,View,ListView,CreateView,DetailView,FormView,UpdateView
 # Create your views here.
 from employer.models import Jobs,Companyprofile
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from employer.models import User
 from employer.forms import Signupform,Loginform,Passwordresetform,Companyprofileform
 from django.contrib.auth import authenticate,login,logout
 #List,Detail,Update,Delete,
@@ -84,7 +85,7 @@ class Signupform(CreateView):
     model=User
     form_class = Signupform
     template_name = "usersignup.html"
-    success_url = reverse_lazy("all-jobs")
+    success_url = reverse_lazy("signin")
 
 
 class Signinview(FormView):
@@ -99,7 +100,13 @@ class Signinview(FormView):
             user=authenticate(request,username=uname,password=pwd)
             if user:
                 login(request,user)
-                return redirect("all-jobs")
+                if request.user.role=="employer":
+                    return redirect("all-jobs")
+                elif request.user.role=="candidate":
+                    # return render(request,"candidate/cand-home.html")
+                    return redirect("cand-home")
+
+
             else:
                 return render(request,"login.html",{"form":form})
 
@@ -153,6 +160,9 @@ class Companyprofileview(CreateView) :
 
 class Empviewprofileview(TemplateView):
     template_name = "emp-profile.html"
+
+
+
 
 
 

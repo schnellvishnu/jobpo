@@ -1,0 +1,18 @@
+{%extends "candidate/base.html"%}
+{%block body_block%}
+
+
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form.as_p}}
+            <input type="submit">
+        </form>
+    </div>
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+</div>
+{%endblock%}

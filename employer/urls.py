@@ -18,4 +18,3 @@ path("home",views.EmployerHomeView.as_view(),name="emp-home"),
     path("profile/edit/<int:id>",views.Empprofileeditview.as_view(),name="emp-editprofile")
 
 ]
-
