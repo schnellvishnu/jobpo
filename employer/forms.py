@@ -10,7 +10,9 @@ class JobForm(forms.ModelForm):
 
         exclude=("company","created_date","active_status")
         widgets={
-            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"})
+            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"}),
+            "description": forms.TextInput(attrs={"class": "form-control "}),
+
         }
 
 

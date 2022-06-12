@@ -1,0 +1,48 @@
+{%extends "candidate/base.html"%}
+{%load static %}
+{%block body_block%}
+<div class="container">
+<div class="row">
+    {%for job in jobs%}
+
+    <div class="col-4 -">
+            <div class="card" style="width: 18rem;">
+  <img src="{{job.company.employer.logo.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{job.job_title_name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{job.description}}</li>
+
+    <li class="list-group-item">{{job.location}}</li>
+    <li class="list-group-item">{{job.salary}}</li>
+        <li class="list-group-item">{{job.created_date}}</li>
+            <li class="list-group-item">{{job.last_date}}</li>
+
+
+
+  </ul>
+  <div class="card-body">
+<!--    <a href="#" class="card-link" class="btn btn-outline-primary">Apply Now</a>-->
+
+      <a href="" class="btn btn-outline-primary">Apply Now</a>
+
+    </div>
+
+
+
+
+
+    {%endfor%}
+</div>
+    </div>
+
+
+
+
+
+
+
+
+{%endblock%}

@@ -31,6 +31,10 @@ class Jobs(models.Model):
     created_date = models.DateField(auto_now_add=True)
     last_date = models.DateField(null=True)
     active_status = models.BooleanField(default=True)
+    description=models.CharField(max_length=150)
+
+
+
 
 
 def __init__(self):

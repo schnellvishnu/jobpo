@@ -1,0 +1,34 @@
+{%extends 'candidate/base.html'%}
+{%load static%}
+
+
+{%block body_block%}
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+  <img src="{{request.user.candidate.profile_pic.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{request.user.first_name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{request.user.candidate.qualification}}</li>
+    <li class="list-group-item">{{request.user.candidate.skills}}</li>
+        <li class="list-group-item">{{request.user.candidate.age}}</li>
+            <li class="list-group-item">{{request.user.candidate.location}}</li>
+
+
+
+  </ul>
+  <div class="card-body">
+        <a href="{{request.user.candidate.resume.url}}" class="card-link">Download Resume</a><br>
+
+    <a href="{%url 'cand-profileEDIT'%}" class="card-link">update profile</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+  </div>
+  <div class="col-4"></div>
+</div>
+{%endblock%}

@@ -14,3 +14,20 @@ class Candidateprofileform(forms.ModelForm):
             "age": forms.NumberInput(attrs={"class": "form-control rounded-pill"}),
 
         }
+class Candidateprofileupdateform(forms.ModelForm):
+    first_name=forms.CharField()
+    last_name=forms.CharField()
+    phone=forms.CharField()
+    email=forms.CharField(max_length=120)
+    class Meta:
+        model=Candidateprofile
+        fields=["first_name",
+                "last_name",
+                "phone",
+                "email",
+                "profile_pic",
+                "resume",
+                "location",
+                "age",
+                "skills",
+                "qualification"]
