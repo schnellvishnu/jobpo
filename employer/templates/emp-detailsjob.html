@@ -11,23 +11,26 @@
 <body>
 <div class="card text-center">
   <div class="card-header">
-    {{jobs.job_title_name}}
+    Job title:{{jobs.job_title_name}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{jobs.company_name}}</h5>
+    <h5 class="card-title">company:{{jobs.company.employer.company_name}}</h5>
     <p class="card-text">
-        {{jobs.locaton}}
+        Location:{{jobs.location}}
     </p>
           <p class="card-text">
-              {{jobs.salary}}
+           Salary:   {{jobs.salary}}
           </p>
           <p class="card-text">
-              {{jobs.experience}}
+              Exprience:{{jobs.experience}}
           </p>
                 <p class="card-text">
-              {{jobs.description}}
+              Description:{{jobs.description}}
           </p>
+             <div>
+                                    <a href="{%url 'emp-applistjob' jobs.id%}" class="btn btn-outline-primary">View Applications</a>
 
+             </div>
 
 
   </div>

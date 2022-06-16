@@ -47,3 +47,21 @@ class Companyprofile(models.Model):
     location = models.CharField(max_length=120)
     services = models.CharField(max_length=120)
     logo = models.ImageField(upload_to="companyprofile", null=True)
+
+
+
+class Application(models.Model):
+    applicant=models.ForeignKey(User,on_delete=models.CASCADE,related_name="applicant")
+    job=models.ForeignKey(Jobs,on_delete=models.CASCADE)
+    options=(
+        ("applied","applied"),
+        ("accepted","accepted"),
+        ("pending","pending"),
+        ("cancelled","cancelled")
+    )
+
+    status=models.CharField(max_length=120,choices=options,default="applied")
+    date=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together=("applicant","job")

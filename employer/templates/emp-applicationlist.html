@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="row"
+    <div class="col->4"></div>
+    <div class="col-8">
+
+        <table class="table">
+
+            <tr>
+                <th>Applicant name</th>
+                <th>Job Title</th>
+
+                <th>Qualification</th>
+                <th>Applied Date</th>
+
+
+
+            </tr>
+            {%for application in applications%}
+            <tr>
+                <td>{{application.applicant.username}}</td>
+                <td>{{application.job.job_title_name}}</td>
+                <td>{{application.applicant.candidate.qualification}}</td>
+
+
+                <td>{{application.date}}</td>
+                <td> <a href="{%url 'emp-detailapp' application.id%}" class="btn btn-outline-success">View Application</a>
+</td>
+
+
+
+
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div class="col-4">
+    </div>
+</div>
+{%endblock%}

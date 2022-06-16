@@ -15,6 +15,8 @@ path("home",views.EmployerHomeView.as_view(),name="emp-home"),
     path("users/password/reset",views.Passwordresetview.as_view(),name="password-reset"),
     path("profile/add/",views.Companyprofileview.as_view(),name="emp-addprofile"),
     path("profile/detail",views.Empviewprofileview.as_view(),name="emp-profile"),
-    path("profile/edit/<int:id>",views.Empprofileeditview.as_view(),name="emp-editprofile")
+    path("profile/edit/<int:id>",views.Empprofileeditview.as_view(),name="emp-editprofile"),
+    path("application/all/<int:id>",views.EmployerApplicationList.as_view(),name="emp-applistjob"),
+    path("applications/details/<int:id>",views.EmployerApplicationDetailview.as_view(),name="emp-detailapp")
 
 ]

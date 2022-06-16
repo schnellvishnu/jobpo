@@ -1,0 +1,45 @@
+{%extends "candidate/base.html"%}
+{%load static %}
+{%block body_block%}
+<div class="card text-center">
+        <div class="col-1">
+            <div class="card" style="width: 18rem;">
+  <img src="{{job.company.employer.logo.url}}" class="card-img-top" alt="...">
+
+  <div class="card-header">
+    {{job.job_title_name}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">company:{{job.company.employer.company_name}}</h5>
+    <p class="card-text">
+        location:{{job.location}}
+    </p>
+          <p class="card-text">
+             salary: {{job.salary}}
+          </p>
+          <p class="card-text">
+            experience:  {{job.experience}}
+          </p>
+                <p class="card-text">
+             job description {{job.description}}
+          </p>
+
+        <li class="list-group-item"> created date:{{job.created_date}}</li><br>
+            <li class="list-group-item"> last date for apply:{{job.last_date}}</li>
+
+
+  </div>
+</div>
+            <div>
+                {%if is_applied%}
+                      <a href="" class="btn btn-outline-success">APPLIED</a>
+
+                {%else%}
+                      <a href="{%url 'applynow' job.id%}" class="btn btn-outline-primary">Apply now</a>
+
+                {%endif%}
+
+
+
+            </div>
+{%endblock%}

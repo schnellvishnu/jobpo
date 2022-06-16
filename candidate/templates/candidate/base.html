@@ -36,12 +36,16 @@
             <li><a class="dropdown-item" href="#">Add profile</a></li>
             {%endif%}
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="{%url 'password-change'%}">change password</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{%url 'signout'%}">Logout</a></li>
+
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+                <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{%url 'cand-application'%}">My Applications</a>
         </li>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

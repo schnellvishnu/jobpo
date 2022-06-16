@@ -3,7 +3,7 @@ from django.views.generic import TemplateView,View,ListView,CreateView,DetailVie
 # Create your views here.
 from employer.models import Jobs,Companyprofile
 # from django.contrib.auth.models import User
-from employer.models import User
+from employer.models import User,Application
 from employer.forms import Signupform,Loginform,Passwordresetform,Companyprofileform
 from django.contrib.auth import authenticate,login,logout
 #List,Detail,Update,Delete,
@@ -172,4 +172,18 @@ class Empprofileeditview(UpdateView):
     form_class = Companyprofileform
     template_name = "emp-editprofile.html"
     success_url = reverse_lazy("emp-profile")
+    pk_url_kwarg = "id"
+#
+class EmployerApplicationList(ListView):
+    model=Application
+    context_object_name = "applications"
+    template_name = "emp-applicationlist.html"
+    def get_queryset(self):
+        return Application.objects.filter(job=self.kwargs.get("id")) .exclude(status="cancelled")
+
+
+class EmployerApplicationDetailview(DetailView):
+    model = Application
+    context_object_name = "application"
+    template_name = "emp-appdetail.html"
     pk_url_kwarg = "id"
