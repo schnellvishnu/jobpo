@@ -125,6 +125,7 @@ class Changepasswordview(TemplateView):
         user=authenticate(request,username=uname,password=pwd)
         if user:
             return redirect("password-reset")
+        
 
         else:
             return render(request,self.template_name)
@@ -148,7 +149,7 @@ class Passwordresetview(TemplateView):
 
 
 
-class Companyprofileview(CreateView) :
+class Companyprofileview(CreateView):
     model=Companyprofile
     form_class = Companyprofileform
     template_name = "emp-addprofile.html"
